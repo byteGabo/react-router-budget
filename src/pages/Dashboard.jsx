@@ -12,7 +12,7 @@ import Intro from "../components/Intro";
 import Table from "../components/Table";
 
 //Helper functions
-import { createBudget, createExpense, fetchData, waait } from "../helpers";
+import { createBudget, createExpense, deleteItem, fetchData, waait } from "../helpers";
 
 //loader
 export function dashboarLoader() {
@@ -49,6 +49,8 @@ export async function dashboardAction({ request }) {
     } catch (e) {
       throw new Error("Hubo un problema al crear tu categoria.");
     }
+
+    
   }
 
   if (_action == "createExpense") {
@@ -63,6 +65,20 @@ export async function dashboardAction({ request }) {
       return toast.success(`Gasto ${values.newExpense} creado!`);
     } catch (e) {
       throw new Error("Hubo un problema al crear tu gasto.");
+    }
+  }
+
+  if (_action == "deleteExpense") {
+    try {
+      //create an expense
+      deleteItem({
+        key: "expenses",
+        id: values.expensesId,
+      });
+
+      return toast.success(`Gasto borrado!`);
+    } catch (e) {
+      throw new Error("Hubo un problema al borrar tu gasto.");
     }
   }
 }

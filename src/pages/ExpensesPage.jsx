@@ -1,12 +1,33 @@
 import { useLoaderData } from "react-router-dom";
+import { toast } from "react-toastify";
 import Table from "../components/Table";
-import { fetchData } from "../helpers";
+import { deleteItem, fetchData } from "../helpers";
 
 //loader
 export function expensesLoader() {
     const expenses = fetchData("expenses");
     return { expenses };
   }
+
+//action 
+export async function expensesAction({ request }){
+  const data = await request.formData();
+  const { _action, ...values} = Object.fromEntries(data);
+
+  if (_action == "deleteExpense") {
+    try {
+      //create an expense
+      deleteItem({
+        key: "expenses",
+        id: values.expensesId,
+      });
+
+      return toast.success(`Gasto borrado!`);
+    } catch (e) {
+      throw new Error("Hubo un problema al borrar tu gasto.");
+    }
+  }
+}  
 
 const ExpensesPage = () => {
     const { expenses } = useLoaderData();

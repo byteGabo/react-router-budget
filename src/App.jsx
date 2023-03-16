@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 //Routes
 import Dashboard, { dashboardAction, dashboarLoader } from "./pages/Dashboard";
 import Error from "./pages/Error";
-import ExpensesPage, { expensesLoader } from "./pages/ExpensesPage";
+import ExpensesPage, { expensesAction, expensesLoader } from "./pages/ExpensesPage";
 
 //actions
 import { logoutAction } from "./actions/logout";
@@ -33,6 +33,7 @@ const router = createBrowserRouter([
         path: "expenses",
         element: <ExpensesPage />,
         loader: expensesLoader,
+        action: expensesAction
         
       },
       {
