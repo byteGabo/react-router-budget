@@ -73,7 +73,7 @@ export async function dashboardAction({ request }) {
       //create an expense
       deleteItem({
         key: "expenses",
-        id: values.expensesId,
+        id: values.expenseId,
       });
 
       return toast.success(`Gasto borrado!`);

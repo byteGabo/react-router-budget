@@ -1,5 +1,10 @@
+//library imports
 import { TrashIcon } from "@heroicons/react/24/solid";
+
+//react router imports
 import { Link, useFetcher } from "react-router-dom";
+
+//helpr imports
 import {
   formatCurrency,
   formatDateToLocalString,

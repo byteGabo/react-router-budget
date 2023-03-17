@@ -19,7 +19,7 @@ export async function expensesAction({ request }){
       //create an expense
       deleteItem({
         key: "expenses",
-        id: values.expensesId,
+        id: values.expenseId,
       });
 
       return toast.success(`Gasto borrado!`);
