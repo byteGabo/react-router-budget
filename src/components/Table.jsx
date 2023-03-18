@@ -1,13 +1,13 @@
 import ExpenseItem from "./ExpenseItem"
 
-const Table = ({expenses}) => {
+const Table = ({expenses, showBudget = true}) => {
   return (
     <div className="table">
         <table>
             <thead>
                 <tr>
                 {
-                    ["Nombre", "Precio", "Fecha", "Presupuesto", ""].map((i, index) => (
+                    ["Nombre", "Precio", "Fecha", showBudget ? "Presupuesto" : "", ""].map((i, index) => (
                         <th key={index}>{i}</th>
                     ))
                 }
@@ -17,7 +17,7 @@ const Table = ({expenses}) => {
                 {
                     expenses.map((expenses) => (
                         <tr key={expenses.id}>
-                           <ExpenseItem expenses={expenses} />
+                           <ExpenseItem expenses={expenses} showBudget={showBudget} />
                         </tr>
                     ))
                 }
